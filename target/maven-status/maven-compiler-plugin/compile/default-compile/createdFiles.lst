@@ -1,0 +1,16 @@
+com\example\currencyexchange\dto\CurrencyListResponse.class
+com\example\currencyexchange\service\ExchangeRateService.class
+com\example\currencyexchange\model\Currency.class
+com\example\currencyexchange\dto\ErrorResponse.class
+com\example\currencyexchange\CurrencyExchangeApplication.class
+com\example\currencyexchange\dto\ConversionResponse.class
+com\example\currencyexchange\model\ExchangeRate.class
+com\example\currencyexchange\security\SecurityConfig.class
+com\example\currencyexchange\controller\CurrencyController.class
+com\example\currencyexchange\exception\InvalidAmountException.class
+com\example\currencyexchange\exception\GlobalExceptionHandler.class
+com\example\currencyexchange\exception\InvalidCurrencyException.class
+com\example\currencyexchange\service\ConversionService.class
+com\example\currencyexchange\controller\ExchangeController.class
+com\example\currencyexchange\exception\CurrencyNotFoundException.class
+com\example\currencyexchange\service\CurrencyService.class

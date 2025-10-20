@@ -1,0 +1,6 @@
+com\example\currencyexchange\controller\ExchangeControllerIntegrationTest.class
+com\example\currencyexchange\service\ExchangeRateServiceTest.class
+com\example\currencyexchange\service\ConversionServiceTest.class
+com\example\currencyexchange\CurrencyExchangeApplicationTests.class
+com\example\currencyexchange\service\CurrencyServiceTest.class
+com\example\currencyexchange\controller\CurrencyControllerIntegrationTest.class

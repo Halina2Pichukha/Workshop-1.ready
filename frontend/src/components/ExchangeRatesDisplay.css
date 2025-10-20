@@ -1,0 +1,235 @@
+/* Exchange Rates Display Component Styles */
+
+.exchange-rates-display {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.exchange-rates-display .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exchange-rates-display h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 24px;
+}
+
+.exchange-rates-display .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.exchange-rates-display .last-updated {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+
+.exchange-rates-display .refresh-button {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.exchange-rates-display .refresh-button:hover {
+  background: #1976D2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.exchange-rates-display .refresh-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.exchange-rates-display.loading,
+.exchange-rates-display.error {
+  text-align: center;
+  padding: 40px;
+}
+
+.exchange-rates-display.error p {
+  color: #f44336;
+  margin-bottom: 16px;
+}
+
+.exchange-rates-display .empty-state {
+  text-align: center;
+  color: #666;
+  padding: 32px;
+  font-size: 16px;
+}
+
+/* Rates Container */
+.rates-container {
+  margin-top: 16px;
+}
+
+/* Rates Table */
+.rates-table {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rates-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1.2fr;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rate-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1.2fr;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.rate-row:hover {
+  background-color: #f8f9fa;
+}
+
+.rate-row:last-child {
+  border-bottom: none;
+}
+
+.rate-cell {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rates-header .rate-cell {
+  padding: 12px 16px;
+}
+
+.currency-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.rate-value {
+  font-weight: 600;
+  color: #2196F3;
+  font-size: 16px;
+}
+
+.inverse-value {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Rates Summary */
+.rates-summary {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.rates-summary p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.rates-summary strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exchange-rates-display {
+    padding: 16px;
+  }
+
+  .exchange-rates-display .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exchange-rates-display .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rates-header,
+  .rate-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .rate-cell:nth-child(3),
+  .rate-cell:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .rates-header .rate-cell:nth-child(3)::before {
+    content: "Rate: ";
+  }
+
+  .rates-header .rate-cell:nth-child(4)::before {
+    content: "Inverse: ";
+  }
+
+  .currency-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .rate-value,
+  .inverse-value {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rates-header,
+  .rate-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rate-cell {
+    padding: 12px;
+    justify-content: flex-start;
+  }
+
+  .rate-cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 8px;
+    min-width: 80px;
+  }
+}
