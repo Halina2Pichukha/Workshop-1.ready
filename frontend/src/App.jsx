@@ -32,6 +32,7 @@ function App() {
       <header className="app-header">
         <h1>💱 Currency Exchange Rates Provider</h1>
         <p className="subtitle">Real-time currency conversion service</p>
+        <button className="hello-button">HELLO</button>
       </header>
 
       <main className="app-main">
