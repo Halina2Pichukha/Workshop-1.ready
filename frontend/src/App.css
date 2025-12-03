@@ -25,6 +25,31 @@
   font-size: 1.1rem;
 }
 
+.hello-button {
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 60px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hello-button:hover {
+  background-color: #0052cc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 102, 255, 0.4);
+}
+
+.hello-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 102, 255, 0.3);
+}
+
 .app-main {
   flex: 1;
   padding: 40px 20px;
