@@ -23,13 +23,6 @@ class ExchangeControllerIntegrationTest {
     @Autowired
     private CurrencyService currencyService;
 
-    @BeforeEach
-    void setUp() {
-        // Add test currencies
-        currencyService.addCurrency("USD");
-        currencyService.addCurrency("EUR");
-    }
-
     @Test
     void testConvertCurrency() throws Exception {
         mockMvc.perform(get("/api/v1/exchange")
@@ -58,10 +51,10 @@ class ExchangeControllerIntegrationTest {
     void testConvertWithUnsupportedFromCurrencyShouldReturnNotFound() throws Exception {
         mockMvc.perform(get("/api/v1/exchange")
                         .param("amount", "100")
-                        .param("from", "GBP")
+                        .param("from", "XXX")
                         .param("to", "EUR"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Currency not supported: GBP"));
+                .andExpect(jsonPath("$.message").value("Currency not supported: XXX"));
     }
 
     @Test
@@ -69,9 +62,9 @@ class ExchangeControllerIntegrationTest {
         mockMvc.perform(get("/api/v1/exchange")
                         .param("amount", "100")
                         .param("from", "USD")
-                        .param("to", "GBP"))
+                        .param("to", "YYY"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Currency not supported: GBP"));
+                .andExpect(jsonPath("$.message").value("Currency not supported: YYY"));
     }
 
     @Test

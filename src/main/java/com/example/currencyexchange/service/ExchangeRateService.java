@@ -75,4 +75,12 @@ public class ExchangeRateService {
     public ConcurrentHashMap<String, ExchangeRate> getAllRates() {
         return new ConcurrentHashMap<>(exchangeRates);
     }
+
+    /**
+     * Remove all exchange rates involving a specific currency
+     */
+    public void removeRatesForCurrency(String currencyCode) {
+        String code = currencyCode.toUpperCase();
+        exchangeRates.keySet().removeIf(key -> key.startsWith(code + "_") || key.endsWith("_" + code));
+    }
 }

@@ -21,10 +21,11 @@ class CurrencyControllerIntegrationTest {
 
     @Test
     void testGetCurrenciesInitiallyEmpty() throws Exception {
+        // With default currencies initialized (USD, EUR, GBP, JPY, CHF, CAD, AUD)
         mockMvc.perform(get("/api/v1/currencies"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.currencies").isArray())
-                .andExpect(jsonPath("$.currencies").isEmpty());
+                .andExpect(jsonPath("$.currencies.length()").value(7));
     }
 
     @Test
@@ -62,19 +63,19 @@ class CurrencyControllerIntegrationTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void testGetCurrenciesAfterAddingCurrencies() throws Exception {
-        // Add currencies
+        // Add new currencies (not in default list: USD, EUR, GBP, JPY, CHF, CAD, AUD)
         mockMvc.perform(post("/api/v1/currencies")
-                        .param("currency", "USD"))
+                        .param("currency", "NZD"))
                 .andExpect(status().isCreated());
 
         mockMvc.perform(post("/api/v1/currencies")
-                        .param("currency", "EUR"))
+                        .param("currency", "SGD"))
                 .andExpect(status().isCreated());
 
-        // Get currencies
+        // Get currencies - should have 7 default + 2 new = 9
         mockMvc.perform(get("/api/v1/currencies"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.currencies").isArray())
-                .andExpect(jsonPath("$.currencies.length()").value(2));
+                .andExpect(jsonPath("$.currencies.length()").value(9));
     }
 }

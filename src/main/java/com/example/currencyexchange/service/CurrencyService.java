@@ -72,4 +72,25 @@ public class CurrencyService {
         }
         return currencies.get(code);
     }
+
+    /**
+     * Delete a currency
+     */
+    public void deleteCurrency(String currencyCode) {
+        if (currencyCode == null || currencyCode.trim().isEmpty()) {
+            throw new InvalidCurrencyException("Currency code cannot be empty");
+        }
+
+        String code = currencyCode.trim().toUpperCase();
+        
+        if (!currencies.containsKey(code)) {
+            throw new CurrencyNotFoundException("Currency not found: " + code);
+        }
+
+        // Remove the currency
+        currencies.remove(code);
+
+        // Remove all exchange rates involving this currency
+        exchangeRateService.removeRatesForCurrency(code);
+    }
 }

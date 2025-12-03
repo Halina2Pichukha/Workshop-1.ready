@@ -61,7 +61,7 @@
 }
 
 .refresh-button {
-  background: #4CAF50;
+  background: #2196F3;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -72,5 +72,5 @@
 }
 
 .refresh-button:hover {
-  background: #45a049;
+  background: #1976D2;
 }

@@ -37,4 +37,15 @@ public class CurrencyController {
         currencyService.addCurrency(currency);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    /**
+     * DELETE /api/v1/currencies/{code} - Delete a currency (ADMIN only)
+     */
+
+    @DeleteMapping("/{code}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteCurrency(@PathVariable("code") String code) {
+        currencyService.deleteCurrency(code);
+        return ResponseEntity.noContent().build();
+    }
 }
